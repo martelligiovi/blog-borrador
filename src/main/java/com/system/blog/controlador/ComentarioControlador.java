@@ -33,6 +33,12 @@ public class ComentarioControlador {
         return new ResponseEntity<>(comentarioServicio.actualizarComentario(id,comentarioDTO), org.springframework.http.HttpStatus.OK);
     }
 
+    @DeleteMapping("/comentarios/{id}")
+    public ResponseEntity<Void> eliminarComentario(@PathVariable(value = "id") Long id){
+        comentarioServicio.eliminarComentario(id);
+        return new ResponseEntity<>(org.springframework.http.HttpStatus.NO_CONTENT);
+    }
+
 
 
 }

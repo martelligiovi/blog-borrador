@@ -9,4 +9,5 @@ public interface ComentarioServicio {
     public List<ComentarioDTO> obtenerComentariosPorPublicacion(Long id);
     public ComentarioDTO obtenerComentarioPorId(Long id);
     public ComentarioDTO actualizarComentario(Long id, ComentarioDTO comentarioDTO);
+    public void eliminarComentario(Long id);
 }

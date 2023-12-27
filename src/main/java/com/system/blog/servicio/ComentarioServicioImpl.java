@@ -68,6 +68,11 @@ public class ComentarioServicioImpl implements ComentarioServicio{
         return convertirAComentarioDTO(comentarioActualizado);
     }
 
+    public void eliminarComentario(Long id) {
+        Comentario comentario = comentarioRepositorio.findById(id).orElseThrow(() -> new ResourceNotFoundException("Comentario", "id", id));
+        comentarioRepositorio.delete(comentario);
+    }
+
 
 
 
