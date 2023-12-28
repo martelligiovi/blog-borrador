@@ -4,6 +4,7 @@ import com.system.blog.DTO.PublicacionDTO;
 import com.system.blog.DTO.PublicacionRespuestaDTO;
 import com.system.blog.servicio.PublicacionServicio;
 import com.system.blog.utilerias.AppConstantes;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,27 +18,9 @@ public class PublicacionControlador {
     private PublicacionServicio publicacionServicio;
 
     @PostMapping
-    public ResponseEntity<PublicacionDTO> guardarPublicacion(@RequestBody PublicacionDTO publicacionDTO){
+    public ResponseEntity<PublicacionDTO> guardarPublicacion(@Valid @RequestBody PublicacionDTO publicacionDTO){
         return new ResponseEntity<>(publicacionServicio.crearPublicacion(publicacionDTO), org.springframework.http.HttpStatus.CREATED);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @GetMapping
     public ResponseEntity<PublicacionRespuestaDTO> obtenerPublicaciones(@RequestParam(value="pagenumber", defaultValue = AppConstantes.NUMERO_DE_PAGINA_POR_DEFECTO, required = false) Integer pageNumber,
@@ -53,13 +36,13 @@ public class PublicacionControlador {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PublicacionDTO> actualizarPublicacion(@RequestBody PublicacionDTO publicacionDTO, @PathVariable Long id){
+    public ResponseEntity<PublicacionDTO> actualizarPublicacion(@RequestBody PublicacionDTO publicacionDTO, @Valid @PathVariable Long id){
         PublicacionDTO publicacionActualizada = publicacionServicio.actualizarPublicacion(publicacionDTO, id);
         return new ResponseEntity<>(publicacionActualizada, org.springframework.http.HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarPublicacion(@PathVariable Long id){
+    public ResponseEntity<String> eliminarPublicacion(@Valid @PathVariable Long id){
         publicacionServicio.eliminarPublicacion(id);
         return new ResponseEntity<>("publicacion eliminada correctamente",org.springframework.http.HttpStatus.NO_CONTENT);
     }

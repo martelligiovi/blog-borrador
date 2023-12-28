@@ -1,5 +1,6 @@
 package com.system.blog.DTO;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ public class ComentarioDTO {
     @NotEmpty(message = "El nombre no puede estar vacio")
     private String nombre;
     @NotEmpty(message = "El email no puede estar vacio")
+    @Email
     private String email;
     @NotEmpty(message = "El cuerpo no puede estar vacio")
     private String cuerpo;
