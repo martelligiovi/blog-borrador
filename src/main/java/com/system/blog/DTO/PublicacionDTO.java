@@ -15,4 +15,10 @@ public class PublicacionDTO {
     @NotEmpty(message = "La descripcion no puede estar vacia")
     private String descripcion;
     private Set<ComentarioDTO> comentarios;
+
+    public PublicacionDTO(Long id) {
+        this.id = id;
+    }
+    public PublicacionDTO() {
+    }
 }

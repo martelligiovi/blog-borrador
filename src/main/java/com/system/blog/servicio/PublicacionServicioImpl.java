@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class PublicacionServicioImpl implements PublicacionServicio{
     }
 
     public PublicacionRespuestaDTO obtenerPublicaciones(int pageNumber, int pageSize, String sortBy, String sortDir){
-        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by("id").descending() : Sort.by("id").descending();
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         Page<Publicacion> publicacionesPaginadas = publicacionRepositorio.findAll(pageable);
         List<Publicacion> publicaciones = publicacionesPaginadas.getContent();
@@ -86,6 +87,7 @@ public class PublicacionServicioImpl implements PublicacionServicio{
         return convertirEntidadADTO(publicacionActualizada);
     }
 
+    @Transactional
     public void eliminarPublicacion(Long id) {
         Publicacion publicacion = publicacionRepositorio.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publicacion", "id", id));
         publicacionRepositorio.delete(publicacion);

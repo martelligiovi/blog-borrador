@@ -13,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/publicacion")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class PublicacionControlador {
     @Autowired
     private PublicacionServicio publicacionServicio;
