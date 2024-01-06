@@ -4,8 +4,8 @@ import com.system.blog.DTO.UserDTO;
 
 import java.util.List;
 
-public class UserServicioImpl extends UserServicio{
-    @Override
+public class UserServicioImpl /*extends UserServicio*/{
+
     public UserDTO crearUser(UserDTO userDTO) {
 
 
@@ -14,17 +14,14 @@ public class UserServicioImpl extends UserServicio{
 
     }
 
-    @Override
     public UserDTO obtenerUserPorId(Long id) {
         return null;
     }
 
-    @Override
     public void eliminarUser(Long id) {
 
     }
 
-    @Override
     public List<UserDTO> obtenerUsers() {
         return null;
     }

@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserControlador {
 
-    public 
+
 
 }
