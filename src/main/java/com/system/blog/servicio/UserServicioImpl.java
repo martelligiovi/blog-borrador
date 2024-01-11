@@ -4,7 +4,7 @@ import com.system.blog.DTO.UserDTO;
 
 import java.util.List;
 
-public class UserServicioImpl extends UserServicio{
+public class UserServicioImpl implements UserServicio {
     @Override
     public UserDTO crearUser(UserDTO userDTO) {
 
