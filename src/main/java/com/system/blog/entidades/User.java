@@ -18,7 +18,4 @@ public class User {
     private String email;
     @Column(name = "password", nullable = false, length = 50)
     private String password;
-
-
-
 }
