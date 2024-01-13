@@ -11,5 +11,7 @@ public interface UserServicio {
     public void eliminarUser(Long id);
     public List<UserDTO> obtenerUsers();
 
+    public boolean login(String username, String password);
+
 
 }
